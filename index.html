@@ -214,42 +214,23 @@
             document.getElementById("Gongpin").innerHTML = "给 "+ name +" 送上贡品";
 
             /* Gitalk 评论区配置 */
-            var gitalk = new Gitalk({
-                clientID: 'b42afd4181c6154ce5d8',
-                clientSecret: '6be60f996da32a7d8f86f9a91bd44fb0482cbf13',
-                repo: 'Lingtang_OnInternet',
-                owner: 'xiaodaren666',
-                admin: ['xiaodaren666'],
-                id: location.pathname,      // Ensure uniqueness and length less than 50
-                distractionFreeMode: false  // Facebook-like distraction free mode
-            });
-            gitalk.render('gitalk-container');
-
-            document.getElementById("UpStream").onclick = function(){
-                $('#Dead_Picture').addClass("UpStream_animation");
-                setTimeout(function(){$('#Dead_Picture').removeClass('UpStream_animation')},1100);
-            };
-            document.getElementById("HideCloth").onclick = function(){
-                $('#Picture_Border').addClass("Hide_animation");
-                $('#Dead_Picture').addClass("CancelBlur");
-                setTimeout(function(){
-                    $('#Picture_Border').removeClass('Hide_animation');
-                    $('#Dead_Picture').removeClass('CancelBlur')
-                },1100);
-            };
-            document.getElementById("BiggerMamma").onclick = function(){
-                $('#Dead_Picture').addClass("Bigger");
-                setTimeout(function(){$('#Dead_Picture').removeClass('Bigger')},2000);
-            };
-            document.getElementById("OpenChampagne").onclick = function(){
-                lottie.loadAnimation({
-                container: Champagne, // 容器节点
-                renderer: 'svg',
-                loop: true,
-                autoplay: true,
-                path: 'champagne.json' // JSON文件路径
-                });
-            };
-        </script>
+           <section class="post-full-comments">
+    {{!-- gittalk --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script>
+        var gitalk = new Gitalk({
+            clientID: 'b42afd4181c6154ce5d8',
+            clientSecret: '1ba60387d38f3206dbd7ef2326054c8a7317b355',
+            repo: 'xiaodaren666.github.io',
+            owner: 'xiaodaren666',
+            admin: ['xiaodaren666'], //这里可以填写具有写权限的用户名列表，用来初始化Issues的
+            id: '{{comment_id}}',
+            distractionFreeMode: false // Facebook-like distraction free mode
+        });
+        gitalk.render('gitalk-container');
+    </script>
+</section>
     </body>
 </html>
